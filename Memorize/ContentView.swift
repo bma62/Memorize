@@ -18,7 +18,7 @@ struct ContentView: View {
             ForEach(0..<4) { index in
                 //this is a range that doesn't include upper bound
                 //if want to include, use 0...4
-                CardView(isFaceUp: false)
+                CardView(isFaceUp: true)
             }
         
         }
