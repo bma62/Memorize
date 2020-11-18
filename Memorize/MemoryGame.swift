@@ -17,12 +17,15 @@ struct MemoryGame <CardContent>
         print("card chosen: \(card)")
     }
     
-    init(numberOfPairsOfCards: Int)
+//    second argument is a function that can take an integer and returns a cardContent
+    //the power of functional programming vs OOP
+    init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent)
     {
         cards = Array<Card>() //an empty array
         for pairIndex in 0..<numberOfPairsOfCards //doesn't include upper limit
         {
-            var content = ...
+            //if it doesn't change (vary), use let to set it to be constant (instead of var)
+            let content = cardContentFactory(pairIndex)
             //append two because it's a pair
             cards.append(Card(isFaceUp: false, isMatched: false, content: content))
             cards.append(Card(isFaceUp: false, isMatched: false, content: content))

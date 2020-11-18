@@ -12,7 +12,16 @@ import SwiftUI
 class EmojiMemoryGame
 {
     //a memory game that uses emoji as card content
-    private var model: MemoryGame<String> = MemoryGame<String>(cards: <#T##Array<MemoryGame<String>.Card>#>)
+    private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+    
+    //add static so the func is on the type instead of being a func so that the above init can call
+//    HOLD OPTION AND CLICK TO GO TO DOCUMENTATION
+    static func createMemoryGame() -> MemoryGame<String>
+    {
+        let emojis: Array<String> = ["👻","🎃"]
+        return MemoryGame<String>(numberOfPairsOfCards: 2)
+            {pairIndex in return emojis[pairIndex]}
+    }
 
     //MARK: - Access to the model
     //the mark keyword provides headers for function and vars
