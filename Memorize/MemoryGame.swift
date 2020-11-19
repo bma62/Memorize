@@ -27,16 +27,17 @@ struct MemoryGame <CardContent>
             //if it doesn't change (vary), use let to set it to be constant (instead of var)
             let content = cardContentFactory(pairIndex)
             //append two because it's a pair
-            cards.append(Card(isFaceUp: false, isMatched: false, content: content))
-            cards.append(Card(isFaceUp: false, isMatched: false, content: content))
+            cards.append(Card(content: content, id: pairIndex*2))
+            cards.append(Card(content: content, id: pairIndex*2+1))
         }
     }
     
     //put in here because it's a MemoryGame.Card for name spacing purposes (not any other cards)
-    struct Card
+    struct Card: Identifiable
     {
-        var isFaceUp: Bool
-        var isMatched: Bool
+        var isFaceUp: Bool = false
+        var isMatched: Bool = false
         var content: CardContent //this is a don't care / generic type
+        var id: Int //needs a unique identifier to be identifiable
     }
 }

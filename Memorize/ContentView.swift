@@ -16,12 +16,10 @@ struct ContentView: View {
         //body is okay as long as it behaves as any view (more flexible than saying Text/String...
         //every time it returns what's in the curly braces
         HStack {
-            ForEach(0..<4) { index in
-                //this is a range that doesn't include upper bound
-                //if want to include, use 0...4
-                CardView(card:...)
+            //always draw from the model to reflect it 
+            ForEach(viewModel.cards) { card in
+                CardView(card:card)
             }
-        
         }
             .padding() //this adds padding inside the textbox
             .foregroundColor(.orange) //every thing in this view will be orange
